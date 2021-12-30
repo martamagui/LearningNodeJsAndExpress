@@ -1,2 +1,3 @@
-04-FirstPackage/node_modules
-05-Nodemon/node_modules
+01-Node/04-FirstPackage/node_modules
+01-Node/05-Nodemon/node_modules
+02-Express/node_modules
