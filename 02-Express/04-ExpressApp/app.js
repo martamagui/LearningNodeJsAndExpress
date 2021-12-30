@@ -6,9 +6,11 @@ const app = express();
 //no hay que ir cogiendo el css, js, fotos, hyml uno por uno
 app.use(express.static("./public"));
 
-app.get("/", (request, response) => {
+/* app.get("/", (request, response) => {
   response.sendFile(path.resolve(__dirname, "./navbar-app/index.html"));
-});
+  adding to static assets
+  SSR
+}); */
 
 app.all("*", (equest, response) => {
   console.log("User hit the resource");
