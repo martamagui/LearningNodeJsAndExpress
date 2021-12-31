@@ -1,5 +1,5 @@
 const express = require("express");
-const { products } = require("./data");
+const { products, people } = require("./data");
 const app = express();
 
 app.get("/", (request, response) => {
@@ -26,24 +26,6 @@ app.get("/api/products/:productID", (req, res) => {
     return res.status(404).send("Product Not Found");
   }
   res.json(singleProduct);
-});
-
-//----------------------------------POSTMAN
-//Edita los datos
-app.post("api/postman/people", (req, res) => {
-  const { name } = req.body;
-  if (!name) {
-    return res.status(400).json({ success: true, data: newPeople });
-  }
-  res.status(201).json({ success: true, data: [...people, name] });
-});
-
-//PUT - Actualiza los datos
-app.put("api/people/:id", (req, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
-  console.log(`${id} ${name}`);
-  res.send("hello world");
 });
 
 app.listen(5000, () => {
