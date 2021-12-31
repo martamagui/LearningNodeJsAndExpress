@@ -5,10 +5,23 @@ let { people } = require("../data");
 //static assets
 app.use(express.static("./methods-public"));
 app.use(express.urlencoded({ extended: false }));
+//parse json
+app.use(express.json());
 
 app.get("/api/people", (req, res) => {
-  res.status(200).json(people);
+  res.status(200).json({ success: true, data: people });
 });
+//POST
+app.post("/api/people", (req, res) => {
+  const { name } = req.body;
+  if (!name) {
+    return res
+      .status(400)
+      .json({ success: false, msg: "Please provide a name" });
+  }
+  res.status(201).json({ success: true, person: name });
+});
+
 //Recoge la info del formulario de index.html
 app.post("/login", (req, res) => {
   const { name } = req.body;
